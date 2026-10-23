@@ -1,8 +1,8 @@
 name: Postino indici PUN PSV
 on:
   schedule:
-    - cron: "17 6 2-10 * *"
-  workflow_dispatch: {}
+    - cron: "17 6 2-10 * *"   # dal 2 al 10 di ogni mese, alle 7:17/8:17 ora italiana
+  workflow_dispatch: {}        # pulsante "Run workflow" per lanciarlo a mano
 permissions:
   contents: write
 jobs:
@@ -13,6 +13,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - name: Installa il lettore Excel (per i file GME)
+        run: pip install openpyxl
       - name: Scarica e controlla gli indici
         run: python aggiorna.py
       - name: Salva se ci sono mesi nuovi
