@@ -11,7 +11,7 @@ Il Simulatore, quando lo apri con internet, legge `indici.json` e aggiunge da so
 
 1. Crea un account gratuito su **github.com**.
 2. In alto a destra **+ → New repository**. Nome: `simulatore-dati`, scegli **Public**, premi **Create repository**.
-3. Nella pagina del repository premi **uploading an existing file** e trascina i file `indici.json`, `README.md` e la cartella `postino` (con dentro `aggiorna.py`). Premi **Commit changes**.
+3. Nella pagina del repository premi **uploading an existing file** e trascina i 3 file `aggiorna.py`, `indici.json` e `README.md` (niente cartelle). Premi **Commit changes**.
 4. Crea il file che fa partire il postino: **Add file → Create new file**. Come nome scrivi esattamente
    `.github/workflows/postino.yml`
    e incolla dentro il contenuto del file `postino.yml` che trovi nella cartella `.github/workflows` di questo pacchetto. Premi **Commit changes**.
