@@ -1,10 +1,13 @@
 name: Postino indici PUN PSV
 on:
   schedule:
-    - cron: "17 6 2-10 * *"   # dal 2 al 10 di ogni mese, alle 7:17/8:17 ora italiana
-  workflow_dispatch: {}        # pulsante "Run workflow" per lanciarlo a mano
+    - cron: "17 6 2-10 * *"
+  workflow_dispatch: {}
 permissions:
   contents: write
+concurrency:
+  group: postino
+  cancel-in-progress: false
 jobs:
   aggiorna:
     runs-on: ubuntu-latest
@@ -24,4 +27,5 @@ jobs:
           git config user.email "postino@users.noreply.github.com"
           git add indici.json
           git commit -m "Indici aggiornati $(date +%Y-%m-%d)"
+          git pull --rebase --autostash
           git push
