@@ -54,15 +54,23 @@ def ultimo_noto(dati, tipo):
 
 
 def leggi_arera_cmem(t):
-    """Tabella ARERA: righe anno (es. '2026') seguite da 'settembre 78,8021 21,889472 0,843182' (€/MWh, €/GJ, €/Smc)."""
-    out, anno = {}, None
-    pat = re.compile(r"\b(20\d\d)\b(?=\s+(?:" + "|".join(MESI) + r")\b)|\b(" + "|".join(MESI) + r")\s+(\d+,\d+)\s+(\d+,\d+)\s+(\d+,\d+)", re.I)
+    """Tabella ARERA: 'settembre 78,8021 21,889472 0,843182' (€/MWh, €/GJ, €/Smc), divisa per anni con righe '2025', '2024'.
+    Le righe prima della prima intestazione d'anno sono dell'anno piu' recente (intestazione successiva + 1)."""
+    out, anno, sospese = {}, None, []
+    pat = re.compile(r"\b(20\d\d)\b(?=[^0-9]{0,80}?\b(?:" + "|".join(MESI) + r")\b)|\b(" + "|".join(MESI) + r")\s+(\d+,\d+)\s+(\d+,\d+)\s+(\d+,\d+)", re.I)
     for m in pat.finditer(t):
         if m.group(1):
+            if anno is None and sospese:
+                for mese, v in sospese:
+                    out.setdefault(f"{int(m.group(1)) + 1}-{mese:02d}", [v])
+                sospese = []
             anno = m.group(1)
-        elif anno:
-            k = f"{anno}-{MESI.index(m.group(2).lower()) + 1:02d}"
-            out.setdefault(k, [float(m.group(5).replace(",", "."))])
+            continue
+        mese, v = MESI.index(m.group(2).lower()) + 1, float(m.group(5).replace(",", "."))
+        if anno:
+            out.setdefault(f"{anno}-{mese:02d}", [v])
+        else:
+            sospese.append((mese, v))
     return out
 
 
@@ -155,6 +163,8 @@ def main():
             continue
         mesi = sorted(set().union(*[set(t) for _, t in letture]))
         for k in mesi:
+            if k in dati[tipo]:  # mese gia' presente: non si riscrive e non si segnala
+                continue
             valori = [(n, t[k]) for n, t in letture if k in t]
             # se le fonti sono 3 basta che 2 concordino: si tiene la coppia che concorda, con la fonte ufficiale per prima
             if len(valori) == 3:
