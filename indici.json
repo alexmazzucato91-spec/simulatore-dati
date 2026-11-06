@@ -1,25 +1,12 @@
 {
- "aggiornato": "2026-10-23",
+ "aggiornato": "2026-11-06",
  "fonte": "PUN Index GME mensile (monorario, F1, F2, F3) e PSV day ahead mensile (PSVDA, €/Smc con PCS 0,03852 GJ/Smc) come pubblicati da ARERA/GME e riportati da A2A e Must Energia",
  "postino": {
   "aggiunti": [
-   "PUN 2024-01 = [0.09916, 0.10965, 0.10507, 0.08906] (Must Energia)",
-   "PUN 2024-02 = [0.08763, 0.09615, 0.09492, 0.07681] (Must Energia)",
-   "PUN 2024-03 = [0.08886, 0.09493, 0.09462, 0.08132] (Must Energia)",
-   "PUN 2024-04 = [0.0868, 0.08557, 0.10129, 0.08054] (Must Energia)",
-   "PUN 2024-05 = [0.09488, 0.09466, 0.11148, 0.08624] (Must Energia)",
-   "PUN 2024-06 = [0.10317, 0.10381, 0.11616, 0.09543] (Must Energia)",
-   "PUN 2024-07 = [0.11232, 0.10867, 0.13063, 0.10478] (Must Energia)",
-   "PUN 2024-08 = [0.12844, 0.12167, 0.14795, 0.12219] (Must Energia)",
-   "PUN 2024-09 = [0.11713, 0.12233, 0.13174, 0.10565] (Must Energia)",
-   "PUN 2024-10 = [0.11669, 0.12378, 0.12663, 0.10527] (Must Energia)",
-   "PUN 2024-11 = [0.13089, 0.14559, 0.13738, 0.11713] (Must Energia)",
-   "PUN 2024-12 = [0.13506, 0.15847, 0.14593, 0.11581] (Must Energia)",
-   "PSV 2024-10 = 0.43269 (Must Energia)",
-   "PSV 2024-11 = 0.47799 (Must Energia)",
-   "PSV 2024-12 = 0.50417 (Must Energia)"
+   "PUN 2026-10 = [0.230817, 0.233394, 0.252135, 0.215884] (GME (prezzi orari ufficiali) + A2A (dati GME/ARERA))",
+   "PSV 2026-10 = 0.945436 (ARERA (CMEM, PSV day ahead) + A2A (PSV day ahead))"
   ],
-  "ultimo_controllo": "2026-11-05"
+  "ultimo_controllo": "2026-11-06"
  },
  "psv": {
   "2024-10": 0.43269,
@@ -45,7 +32,8 @@
   "2026-06": 0.505178,
   "2026-07": 0.606917,
   "2026-08": 0.686889,
-  "2026-09": 0.843639
+  "2026-09": 0.843639,
+  "2026-10": 0.945436
  },
  "pun": {
   "2024-01": [
@@ -245,6 +233,12 @@
    0.20635,
    0.22758,
    0.19702
+  ],
+  "2026-10": [
+   0.230817,
+   0.233394,
+   0.252135,
+   0.215884
   ]
  }
 }
