@@ -6,7 +6,7 @@
    "PUN 2026-10 = [0.230817, 0.233394, 0.252135, 0.215884] (GME (prezzi orari ufficiali) + A2A (dati GME/ARERA))",
    "PSV 2026-10 = 0.945436 (ARERA (CMEM, PSV day ahead) + A2A (PSV day ahead))"
   ],
-  "ultimo_controllo": "2026-11-09"
+  "ultimo_controllo": "2026-11-10"
  },
  "psv": {
   "2024-10": 0.43269,
